@@ -20,6 +20,9 @@ const fs = require('fs');
     }
     let jsonContent;
 //  CodePostal | CodeINSEE | NomVille | Geographie | Population | Estimation5 | Estimation10 | Estimation 15 | PrixM2 | PrixMinM2 | PrixMaxM2 | Salaire  
+//
+//new :  
+// CodeINSEE | CodePostal | NomVille | Geographie | Population | PrixM22019 | PrixM22021 | EvolMarche2021 | PrixMoyenVenteBien2019 | PrixM22024 | EvolMarche2024 
  
  readXlsxFile('../files/Flair.xlsx').then(async (rows) => {
     // `rows` is an array of rows
@@ -35,18 +38,15 @@ const fs = require('fs');
                 "coordinates": JSON.parse(row[3]),
             },
             "properties": {
-                "codePostal": row[0],
-                "codeINSEE" : row[1],
+                "codePostal": row[1],
+                "codeINSEE" : row[0],
                 "city_name": row[2],
                 "population": parseInt(row[4]),
-                "estimation5": parseInt(row[5]),
-                "estimation10": parseInt(row[6]),
-                "estimation15": parseInt(row[7]),
-                "M2price": parseInt(row[8]),
-                "minM2price":parseInt(row[9]),
-                "maxM2price": parseInt(row[10]),
-                "salaire":parseInt(row[11])
-
+                "prixActuel": parseFloat(row[5]).toFixed(3),
+                "prix_2": parseFloat(row[6]).toFixed(3),
+                "estimation2": parseFloat(row[7]).toFixed(3),
+                "prix_5": parseFloat(row[9]).toFixed(3),
+                "estimation5": parseFloat(row[10]).toFixed(3),
             }
         }
         geoData.features.push(feature);

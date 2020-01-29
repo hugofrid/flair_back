@@ -4,8 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
-
-// var runScript = require('./scripts/writeJsonFile.js');
+//ar runScript = require('./scripts/writeJsonFile.js');
 
 
 //ROUTES CALL
