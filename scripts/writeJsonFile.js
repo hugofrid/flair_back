@@ -27,9 +27,7 @@ const fs = require('fs');
  readXlsxFile('../files/Flair.xlsx').then(async (rows) => {
     // `rows` is an array of rows
     // each row being an array of cells.
-    // const titles = rows.slice(0, 1);
     const cities = rows.slice(1);
-   // console.log(titles,cities)
     await cities.map(async row => {
         let feature = {
             "type": 'Feature',
@@ -45,6 +43,7 @@ const fs = require('fs');
                 "prixActuel": parseFloat(row[5]).toFixed(3),
                 "prix_2": parseFloat(row[6]).toFixed(3),
                 "estimation2": parseFloat(row[7]).toFixed(3),
+                "prixVenteMoyen": parseInt(row[8]),
                 "prix_5": parseFloat(row[9]).toFixed(3),
                 "estimation5": parseFloat(row[10]).toFixed(3),
             }
@@ -52,7 +51,7 @@ const fs = require('fs');
         geoData.features.push(feature);
     })
 
-    console.log(geoData);
+    
 
    jsonContent  = await  JSON.stringify(geoData);
      
